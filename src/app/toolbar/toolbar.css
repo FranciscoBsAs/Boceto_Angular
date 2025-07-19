@@ -1,0 +1,5 @@
+.toolbarLocal {
+  grid-area: toolbar;
+  border: 5px solid orange;
+  padding: 10px;
+}

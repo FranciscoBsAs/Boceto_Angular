@@ -1,0 +1,4 @@
+.navbarLocal {
+  grid-area: navbar;
+  border: 3px solid olive;
+}
