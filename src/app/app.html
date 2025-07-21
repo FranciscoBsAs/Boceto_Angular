@@ -6,6 +6,15 @@
 
   <div class="content">
     Contenido principal
+
+    {{ studentsArray | json }}
+
+    <students-table [studentsInTable]="studentsArray" />
+
+    <br>
+
+    <add-form (studentAdded)=" handleAddNewStudent( $event ) " />
+
   </div>
   
 </div>

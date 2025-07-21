@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Juan",
+    "surname": "Pérez",
+    "dni": 12345678,
+    "age": 20,
+    "average": 8.5
+  },
+  {
+    "name": "María",
+    "surname": "Gómez",
+    "dni": 87654321,
+    "age": 22,
+    "average": 9.0
+  },
+  {
+    "name": "Pedro",
+    "surname": "López",
+    "dni": 11223344,
+    "age": 21,
+    "average": 7.5
+  }
+]
+
