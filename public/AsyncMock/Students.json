@@ -19,6 +19,13 @@
     "dni": 11223344,
     "age": 21,
     "average": 7.5
+  },
+   {
+    "name": "Miguel",
+    "surname": "Mckensie",
+    "dni": 63219374,
+    "age": 21,
+    "average": 8.6
   }
 ]
 

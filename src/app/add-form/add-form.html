@@ -76,8 +76,11 @@
             formControlName="average"
             placeholder="Ingrese el promedio" 
         >
-        <div  *ngIf=" addStudentForm.get( 'average' )?.invalid && addStudentForm.get('average')?.touched "    class="err-class" >
-            Promedio es requerido
+        <div  *ngIf="( 
+                        addStudentForm.get( 'average' )?.errors?.['nullAverage'] || addStudentForm.get('average')?.errors?.['required']
+                    )  
+                    && addStudentForm.get('average')?.touched "    class="err-class" >
+            Promedio es requerido y debe ser mayor a 0
         </div>
 
     </div>

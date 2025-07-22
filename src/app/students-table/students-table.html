@@ -1,5 +1,3 @@
-<p>students-table works!</p>
-
 <table mat-table [dataSource]="studentsInTable" class="mat-elevation-z8" >
 
   <!--- Note that these columns can be defined in any order.
@@ -8,27 +6,35 @@
   <!-- Position Column -->
   <ng-container matColumnDef="FullName">
     <th mat-header-cell *matHeaderCellDef> Full Name </th>
-    <td mat-cell *matCellDef="let elementOfArray"> {{elementOfArray | fullNamePipe }} </td>
+    <td mat-cell *matCellDef="let elementOfArray">
+      {{elementOfArray | fullNamePipe }} 
+    </td>
   </ng-container>
 
   <!-- Name Column -->
   <ng-container matColumnDef="DNI">
     <th mat-header-cell *matHeaderCellDef> DNI </th>
-    <td mat-cell *matCellDef="let elementOfArray"> {{elementOfArray.dni}} </td>
+    <td mat-cell *matCellDef="let elementOfArray">
+      {{elementOfArray.dni}}
+    </td>
   </ng-container>
 
 
     <!-- Name Column -->
   <ng-container matColumnDef="Age">
     <th mat-header-cell *matHeaderCellDef> Age </th>
-    <td mat-cell *matCellDef="let elementOfArray"> {{elementOfArray.age}} </td>
+    <td mat-cell *matCellDef="let elementOfArray">
+      {{elementOfArray.age}}
+    </td>
   </ng-container>
   
 
       <!-- Name Column -->
   <ng-container matColumnDef="Average">
     <th mat-header-cell *matHeaderCellDef> Average </th>
-    <td mat-cell *matCellDef="let elementOfArray"> {{elementOfArray.average}} </td>
+    <td mat-cell *matCellDef="let elementOfArray">
+      {{elementOfArray.average}}
+    </td>
   </ng-container>
 
 

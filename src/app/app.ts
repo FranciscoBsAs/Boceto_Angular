@@ -7,10 +7,11 @@ import { HttpClient } from '@angular/common/http';
 import { studentInterface } from '../shared/sharedContent/entities';
 import { StudentsTable } from './students-table/students-table';
 import { AddForm } from './add-form/add-form';
+import { DeleteForm } from './delete-form/delete-form';
 
 @Component({
   selector: 'app-root',
-  imports: [ Toolbar, Navbar, CommonModule, StudentsTable, AddForm],
+  imports: [ Toolbar, Navbar, CommonModule, StudentsTable, AddForm, DeleteForm],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -19,6 +20,8 @@ export class App  implements OnInit {
   protected title = 'angular-coderhouse-project';
 
   studentsArray : studentInterface[] = []
+
+  currentSection : string = 'students-table-section'
 
   constructor( private myHttp : HttpClient ) {}
 
@@ -34,10 +37,20 @@ export class App  implements OnInit {
 
   }
 
+
   handleAddNewStudent( stu : studentInterface ) {
     
     this.studentsArray = [ ...this.studentsArray, stu ]
     console.log('Adding new student', stu)
   }
 
+
+  handleDeleteStudent ( id : number ) {
+
+    const updateStudents = this.studentsArray.filter( (st) =>  st.dni !== id  ) ;
+
+    this.studentsArray = [ ...updateStudents ]
+
+  }
+  
 }

@@ -1,7 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { studentInterface } from '../../shared/sharedContent/entities';
+
+
+function averageSup0( control : AbstractControl ) : ValidationErrors | null {
+  const value = parseFloat(control.value)
+  return (
+    !isNaN( value ) && value > 0
+      ? null 
+      : { nullAverage: true }
+  )
+}
 
 @Component({
   selector: 'add-form',
@@ -24,7 +34,7 @@ export class AddForm implements OnInit {
         surname: [ '', Validators.required ],
         dni: [ '', Validators.required ],
         age: [ '', Validators.required, ],
-        average: [ '', [ Validators.required, Validators.min(0), Validators.max(10) ] ]
+        average: [ '', [ Validators.required, averageSup0, Validators.max(10) ] ]
       }
     )
 
@@ -37,6 +47,8 @@ export class AddForm implements OnInit {
     console.log( "Form submited" )
 
     this.studentAdded.emit( this.addStudentForm.value as studentInterface)
+
+    this.addStudentForm.reset()
 
   }
   

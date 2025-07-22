@@ -2,18 +2,30 @@
 
   <app-toolbar class="toolbar"></app-toolbar>
 
-  <app-navbar class="navbar"></app-navbar>
+  <app-navbar
+      (currentSectionFromChild)=" currentSection = $event "
+      class="navbar"
+  >
+  </app-navbar>
 
   <div class="content">
-    Contenido principal
+    <h4>Contenido principal</h4>
 
-    {{ studentsArray | json }}
 
-    <students-table [studentsInTable]="studentsArray" />
+    <ng-container *ngIf=" currentSection === 'students-table-section' " >
+      <students-table [studentsInTable]="studentsArray" />
+    </ng-container>
 
     <br>
 
-    <add-form (studentAdded)=" handleAddNewStudent( $event ) " />
+    <ng-container *ngIf=" currentSection === 'add-student-section' " >
+      <add-form (studentAdded)=" handleAddNewStudent( $event ) " />
+    </ng-container>
+
+
+    <ng-container *ngIf=" currentSection === 'delete-student-section' " >
+      <delete-form (studentDeleteFromChild)="handleDeleteStudent($event)" />
+    </ng-container>
 
   </div>
   

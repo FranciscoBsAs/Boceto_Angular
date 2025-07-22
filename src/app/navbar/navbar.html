@@ -5,10 +5,27 @@
 
     <ul>
 
-        <li>Ver lista de estudiantes</li>
-        <li>Agregar</li>
-        <li>Eliminar</li>
-        <li>Modificar</li>
+        <li 
+            (click)="navigateSections('students-table-section')" 
+        >
+            Ver lista de estudiantes
+        </li>
+
+        <li
+            (click)="navigateSections( 'add-student-section' )"
+        >
+            Agregar
+        </li>
+
+        <li (click)="navigateSections( 'delete-student-section' )" >
+            Eliminar
+        </li>
+        
+        <li
+            (click)="navigateSections( 'edit' )"
+        >
+            Modificar
+        </li>
 
     </ul>
 
