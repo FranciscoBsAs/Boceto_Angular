@@ -8,10 +8,11 @@ import { studentInterface } from '../shared/sharedContent/entities';
 import { StudentsTable } from './students-table/students-table';
 import { AddForm } from './add-form/add-form';
 import { DeleteForm } from './delete-form/delete-form';
+import { EditForm } from "./edit-form/edit-form";
 
 @Component({
   selector: 'app-root',
-  imports: [ Toolbar, Navbar, CommonModule, StudentsTable, AddForm, DeleteForm],
+  imports: [Toolbar, Navbar, CommonModule, StudentsTable, AddForm, DeleteForm, EditForm],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -53,4 +54,16 @@ export class App  implements OnInit {
 
   }
   
+
+  handleEditStudent ( editedStudent : studentInterface ) {
+
+    const index = this.studentsArray.findIndex( ( t ) => t.dni === editedStudent.dni )
+
+    if ( index !== -1 ) {
+      this.studentsArray[index] = editedStudent
+    }
+    
+  }
+
+
 }

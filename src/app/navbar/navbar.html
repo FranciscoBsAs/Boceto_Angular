@@ -3,26 +3,32 @@
 
     <h2>Acciones</h2>
 
-    <ul>
+    <ul class="nav flex-column" >
 
         <li 
-            (click)="navigateSections('students-table-section')" 
+            (click)="navigateSections('students-table-section')"
+            class="nav-link custom-nav-item" 
         >
             Ver lista de estudiantes
         </li>
 
         <li
             (click)="navigateSections( 'add-student-section' )"
+            class="nav-link custom-nav-item"
         >
             Agregar
         </li>
 
-        <li (click)="navigateSections( 'delete-student-section' )" >
+        <li
+            (click)="navigateSections( 'delete-student-section' )"
+            class="nav-link custom-nav-item"    
+        >
             Eliminar
         </li>
         
         <li
-            (click)="navigateSections( 'edit' )"
+            (click)="navigateSections( 'edit-student-section' )"
+            class="nav-link custom-nav-item"
         >
             Modificar
         </li>

@@ -1,1 +1,141 @@
-<p>edit-form works!</p>
+<div class="edit-form" >
+
+    <h2> Editar Estudiante </h2>
+
+    <div class="formField-group" >
+
+        <label for="dniBuscar">DNI</label>
+        <input type="number" id="dniBuscar" [(ngModel)]="dniBuscar"  placeholder="Ingrese el DNI a buscar">
+
+        <button type="button" (click)="searchStudentByDNI()">Buscar estudiante</button>
+
+        <div *ngIf="editStudentForm.get('dni')?.invalid && editStudentForm.get('dni')?.touched" class="err-class">
+            DNI es requerido
+        </div>
+
+    </div>
+
+    <br> <br>
+
+    <form [formGroup]="editStudentForm" (ngSubmit)="onSubmit()" >
+
+        <div class="formField-group" >
+
+            <label for="dni">
+                DNI: 
+            </label>
+
+            <input
+                type="number"
+                id="dni"
+                formControlName="dni"
+                placeholder="ingrese el DNI editado"
+            >
+
+            <div *ngIf="editStudentForm.get('dni')?.invalid && editStudentForm.get('dni')?.touched " class="err-class" >
+                <h3>
+                    DNI es requerido
+                </h3>
+            </div>
+        </div>
+
+
+        <div class="formField-group" >
+
+            <label for="dni">
+                Nombre: 
+            </label>
+
+            <input
+                type='text'
+                id="name"
+                formControlName="name"
+                placeholder="ingrese el nombre editado"
+            >
+
+            <div *ngIf="editStudentForm.get('name')?.invalid && editStudentForm.get('name')?.touched " class="err-class" >
+                <h3>
+                    El nombre es requerido
+                </h3>
+            </div>
+        </div>
+
+
+        
+        <div class="formField-group" >
+
+            <label for="surname">
+                Apellido: 
+            </label>
+
+            <input
+                type="text"
+                id="surname"
+                formControlName="surname"
+                placeholder="ingrese el apellido editado"
+            >
+
+            <div *ngIf="editStudentForm.get('surname')?.invalid && editStudentForm.get('surname')?.touched " class="err-class" >
+                <h3>
+                    La edad es requerido
+                </h3>
+            </div>
+
+        </div>
+
+
+        <div class="formField-group" >
+
+            <label for="age">
+                Edad: 
+            </label>
+
+            <input
+                type="number"
+                id="age"
+                formControlName="age"
+                placeholder="ingrese la edad a editar"
+            >
+
+            <div *ngIf="editStudentForm.get('age')?.invalid && editStudentForm.get('age')?.touched " class="err-class" >
+                <h3>
+                    La edad es requerido
+                </h3>
+            </div>
+            
+        </div>
+
+
+        <div class="formField-group" >
+
+            <label for="average">
+                Promedio: 
+            </label>
+
+            <input
+                type="number"
+                id="average"
+                formControlName="average"
+                placeholder="ingrese el promedio editado"
+            >
+
+            <div *ngIf="editStudentForm.get('average')?.invalid && editStudentForm.get('average')?.touched " class="err-class" >
+                <h3>
+                    El promedio es requerido
+                </h3>
+            </div>
+            
+        </div>
+
+        <button type="submit" [disabled]="editStudentForm.invalid" class="submit-btn">
+            Editar Estudiante
+        </button>
+
+        <button type="button" (click)="handleOnReset()" class="reset-btn">
+            Limpiar formulario
+        </button>
+
+
+    </form>
+
+</div>

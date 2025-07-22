@@ -7,7 +7,6 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 
 
-
 @Component({
   selector: 'delete-form',
   imports: [ ReactiveFormsModule, CommonModule, MatFormFieldModule, MatInputModule, MatButtonModule ],
@@ -36,7 +35,6 @@ export class DeleteForm implements OnInit {
   @Output() studentDeleteFromChild : EventEmitter<number> = new EventEmitter<number>()
 
   onDeleteStudent() : number | void {
-
     console.log('Delete Form submitted:', this.deleteStudentForm.valid);
 
     if( this.deleteStudentForm.valid ) {
@@ -55,7 +53,6 @@ export class DeleteForm implements OnInit {
     const action = 'Cerrar'
     
     this._mySnackBar.open( message, action )
-    
   }
 
   handleOnReset() {

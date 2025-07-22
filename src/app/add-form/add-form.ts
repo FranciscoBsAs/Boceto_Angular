@@ -4,7 +4,7 @@ import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validatio
 import { studentInterface } from '../../shared/sharedContent/entities';
 
 
-function averageSup0( control : AbstractControl ) : ValidationErrors | null {
+export function averageSup0( control : AbstractControl ) : ValidationErrors | null {
   const value = parseFloat(control.value)
   return (
     !isNaN( value ) && value > 0
@@ -53,9 +53,7 @@ export class AddForm implements OnInit {
   }
   
   handleOnReset() {
-    this.addStudentForm.reset()
-
-    // reset the form to it's initial state
+    this.addStudentForm.reset() // reset the form to it's initial state
   }
 
 

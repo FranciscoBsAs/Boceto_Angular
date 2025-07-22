@@ -27,6 +27,10 @@
       <delete-form (studentDeleteFromChild)="handleDeleteStudent($event)" />
     </ng-container>
 
+    <ng-container *ngIf=" currentSection === 'edit-student-section' " >
+      <edit-form [theStudentSearchEngine]="studentsArray" (studentEdited)=" handleEditStudent( $event ) "   />
+    </ng-container>
+
   </div>
   
 </div>
