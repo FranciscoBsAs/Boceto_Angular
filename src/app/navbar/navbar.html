@@ -5,33 +5,45 @@
 
     <ul class="nav flex-column" >
 
-        <li 
-            (click)="navigateSections('students-table-section')"
-            class="nav-link custom-nav-item" 
-        >
-            Ver lista de estudiantes
-        </li>
+        <mat-card appearance="outlined" >
+            <li 
+                (click)="navigateSections('students-table-section')"
+                class="nav-link custom-nav-item" 
+            >
+                <mat-card-content>
+                    Ver lista de estudiantes
+                </mat-card-content>
+            </li>
 
-        <li
-            (click)="navigateSections( 'add-student-section' )"
-            class="nav-link custom-nav-item"
-        >
-            Agregar
-        </li>
+            <li
+                (click)="navigateSections( 'add-student-section' )"
+                class="nav-link custom-nav-item"
+            >
+                <mat-card-content>
+                    Agregar
+                </mat-card-content>
 
-        <li
-            (click)="navigateSections( 'delete-student-section' )"
-            class="nav-link custom-nav-item"    
-        >
-            Eliminar
-        </li>
-        
-        <li
-            (click)="navigateSections( 'edit-student-section' )"
-            class="nav-link custom-nav-item"
-        >
-            Modificar
-        </li>
+            </li>
+
+            <li
+                (click)="navigateSections( 'delete-student-section' )"
+                class="nav-link custom-nav-item"    
+            >
+                <mat-card-content>
+                    Eliminar
+                </mat-card-content>
+            </li>
+            
+            <li
+                (click)="navigateSections( 'edit-student-section' )"
+                class="nav-link custom-nav-item"
+            >
+                <mat-card-content>
+                    Modificar
+                </mat-card-content>
+            </li>
+
+        </mat-card>
 
     </ul>
 

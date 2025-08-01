@@ -1,17 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule,  Validators } from '@angular/forms';
 import { studentInterface } from '../../shared/sharedContent/entities';
 
+import { averageSup0, firstLetterUpperCaseValidator, onlyLettersValidator } from '../../shared/validatorFunctions/ValidatorFunctions';
 
-export function averageSup0( control : AbstractControl ) : ValidationErrors | null {
-  const value = parseFloat(control.value)
-  return (
-    !isNaN( value ) && value > 0
-      ? null 
-      : { nullAverage: true }
-  )
-}
 
 @Component({
   selector: 'add-form',
@@ -30,10 +23,10 @@ export class AddForm implements OnInit {
 
     this.addStudentForm = this.myFormBuilder.group(
       {
-        name: [ '', Validators.required ],
-        surname: [ '', Validators.required ],
-        dni: [ '', Validators.required ],
-        age: [ '', Validators.required, ],
+        name: [ '', [ Validators.required, onlyLettersValidator, firstLetterUpperCaseValidator ] ],
+        surname: [ '', [ Validators.required, onlyLettersValidator, firstLetterUpperCaseValidator ] ],
+        dni: [ '', [  Validators.required, Validators.minLength(7) ] ],
+        age: [ '', [ Validators.required ] ],
         average: [ '', [ Validators.required, averageSup0, Validators.max(10) ] ]
       }
     )

@@ -1,8 +1,10 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { MatCardModule } from '@angular/material/card'
+
 
 @Component({
   selector: 'app-navbar',
-  imports: [],
+  imports: [ MatCardModule ],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css'
 })

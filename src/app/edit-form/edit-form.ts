@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { studentInterface } from '../../shared/sharedContent/entities';
-import { averageSup0 } from '../add-form/add-form';
 import { MatSnackBar } from '@angular/material/snack-bar'
+import { averageSup0, firstLetterUpperCaseValidator, onlyLettersValidator } from '../../shared/validatorFunctions/ValidatorFunctions';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+
 
 @Component({
   selector: 'edit-form',
@@ -29,13 +30,13 @@ export class EditForm implements OnInit {
 
   constructor( private myFormBuilder : FormBuilder ) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void { // este hook grlmente se usa para pedir datos a una API o para cambiar/operar datos del template
       this.editStudentForm = this.myFormBuilder.group(
         {
-          dni: ['', [Validators.required]],
-          name: ['', [Validators.required, ]],
-          surname: ['', [Validators.required,]],
-          age: ['', [Validators.required, Validators.min(1)]],
+          dni: [''],
+          name: ['', [Validators.required, onlyLettersValidator, firstLetterUpperCaseValidator ] ],
+          surname: ['', [Validators.required, onlyLettersValidator, firstLetterUpperCaseValidator ] ],
+          age: ['', [Validators.required,] ],
           average: ['', [Validators.required, averageSup0, Validators.max(10)]],
         }
       )
@@ -65,7 +66,7 @@ export class EditForm implements OnInit {
         this.editStudentForm.patchValue( studentSearched ) 
       }
       else{
-        this.showNotFound_SnackBar()
+        this.showNotFounded_SnackBar()
       }
 
   }
@@ -78,7 +79,7 @@ export class EditForm implements OnInit {
   }
 
 
-  showNotFound_SnackBar () {
+  showNotFounded_SnackBar () {
 
     const messageNotFound = 'Estudiante no encontrado'
     const actionNotFound = 'Cerrar'

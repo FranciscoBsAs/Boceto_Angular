@@ -5,3 +5,10 @@
 .formField-group{
     padding: 5px;
 }
+
+.readonly-dni {
+  background-color: #e0e0e0; /* gris claro */
+  color: #555; /* texto más apagado */
+  border: 1px solid #ccc;
+  cursor: not-allowed;
+}

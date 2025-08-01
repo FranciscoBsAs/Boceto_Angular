@@ -12,8 +12,37 @@
                 formControlName="name"
                 placeholder="Ingrese el nombre" 
             >
-            <div  *ngIf=" addStudentForm.get( 'name' )?.invalid && addStudentForm.get('name')?.touched " class="err-class" >
-                Nombre es requerido
+            <div
+                *ngIf="(
+                    addStudentForm.get( 'name' )?.errors?.['onlyLetters'] 
+                    &&
+                    addStudentForm.get('name')?.touched
+                )"
+                class="err-class" > 
+            
+                >Nombre solo con letras
+            </div>
+
+            <div
+                *ngIf="(
+                    addStudentForm.get('name')?.errors?.[ 'required' ]
+                    &&
+                    addStudentForm.get('name')?.touched
+                )"
+                class="err-class"
+            > 
+                >Nombre es requerido   
+            </div>
+
+            <div
+                *ngIf="(
+                    addStudentForm.get('name')?.errors?.[ 'firstLetterIsNotUpperCase' ]
+                    &&
+                    addStudentForm.get('name')?.touched
+                )"
+                class="err-class"
+            > 
+                >Nombre debe empezar con mayuscula   
             </div>
 
         </div>
@@ -28,8 +57,37 @@
                 formControlName="surname"
                 placeholder="Ingrese el apellido" 
             >
-            <div  *ngIf=" addStudentForm.get( 'surname' )?.invalid && addStudentForm.get('surname')?.touched " class="err-class" >
-                Apellido es requerido
+            <div
+                *ngIf="(
+                    addStudentForm.get( 'surname' )?.errors?.['onlyLetters'] 
+                    &&
+                    addStudentForm.get('surname')?.touched
+                )"
+                class="err-class"
+            >
+                >Apellido solo con letras
+            </div>
+
+            <div
+                *ngIf="(
+                    addStudentForm.get('surname')?.errors?.[ 'required' ]
+                    &&
+                    addStudentForm.get( 'surname')?.touched
+                )"
+                class="err-class" 
+            >
+                > Apellido es requerido 
+            </div>
+
+            <div
+                *ngIf="(
+                    addStudentForm.get('surname')?.errors?.[ 'firstLetterIsNotUpperCase' ]
+                    &&
+                    addStudentForm.get( 'surname')?.touched
+                )"
+                class="err-class" 
+            >
+                > Apellido debe empezar con mayuscula 
             </div>
 
         </div>
@@ -60,7 +118,12 @@
             formControlName="age"
             placeholder="Ingrese la edad" 
         >
-        <div  *ngIf=" addStudentForm.get( 'age' )?.invalid && addStudentForm.get('age')?.touched " class="err-class" >
+        <div  
+            *ngIf=" addStudentForm.get( 'age' )?.invalid
+            &&
+            addStudentForm.get('age')?.touched "
+            class="err-class"
+        >
             Edad es requerido
         </div>
 
@@ -76,12 +139,26 @@
             formControlName="average"
             placeholder="Ingrese el promedio" 
         >
-        <div  *ngIf="( 
-                        addStudentForm.get( 'average' )?.errors?.['nullAverage'] || addStudentForm.get('average')?.errors?.['required']
-                    )  
-                    && addStudentForm.get('average')?.touched "    class="err-class"
+        <div
+            *ngIf="( 
+                addStudentForm.get( 'average' )?.errors?.['nullAverage'] 
+                &&
+                addStudentForm.get('average')?.touched 
+            ) "
+            class="err-class"
         >
-            Promedio es requerido y debe ser mayor a 0
+            >Promedio debe ser mayor de 0 hasta 10
+        </div>
+
+        <div
+            *ngIf="(
+                addStudentForm.get('average')?.errors?.['required']
+                &&
+                addStudentForm.get( 'average' )?.touched
+            )"
+            class="err-class"
+        >
+            >Promedio es requerido
         </div>
 
     </div>
