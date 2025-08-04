@@ -1,0 +1,16 @@
+<p>students-full-component works!</p>
+
+<div *ngIf="studentsArray ; else loading" >
+
+    {{ studentsArray | json}}
+
+    <students-table [studentsInTable]="studentsArray" >
+
+    </students-table>
+
+</div>
+
+<ng-template #loading >
+    <p> Loading... </p>
+</ng-template>
+

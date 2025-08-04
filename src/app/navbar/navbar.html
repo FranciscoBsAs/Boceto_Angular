@@ -6,40 +6,28 @@
     <ul class="nav flex-column" >
 
         <mat-card appearance="outlined" >
-            <li 
-                (click)="navigateSections('students-table-section')"
-                class="nav-link custom-nav-item" 
-            >
+            <li class="nav-link custom-nav-item" >
                 <mat-card-content>
-                    Ver lista de estudiantes
+                    <a routerLink="/estudiantes" >
+                        Lista de estudiantes
+                    </a>
                 </mat-card-content>
             </li>
 
-            <li
-                (click)="navigateSections( 'add-student-section' )"
-                class="nav-link custom-nav-item"
-            >
+            <li class="nav-link custom-nav-item">
                 <mat-card-content>
-                    Agregar
+                    <a routerLink="/cursos" >
+                        Cursos
+                    </a>
                 </mat-card-content>
 
             </li>
 
-            <li
-                (click)="navigateSections( 'delete-student-section' )"
-                class="nav-link custom-nav-item"    
-            >
+            <li class="nav-link custom-nav-item" >
                 <mat-card-content>
-                    Eliminar
-                </mat-card-content>
-            </li>
-            
-            <li
-                (click)="navigateSections( 'edit-student-section' )"
-                class="nav-link custom-nav-item"
-            >
-                <mat-card-content>
-                    Modificar
+                    <a routerLink="/inscripciones" >
+                        Inscripciones
+                    </a>
                 </mat-card-content>
             </li>
 

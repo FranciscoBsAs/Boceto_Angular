@@ -2,15 +2,19 @@
 
   <app-toolbar class="toolbar"></app-toolbar>
 
-  <app-navbar
-      (currentSectionFromChild)=" currentSection = $event "
-      class="navbar"
-  >
-  </app-navbar>
+  <app-navbar class="navbar"> </app-navbar>
 
   <div class="content">
     <h4>Contenido principal</h4>
 
+
+
+
+    <router-outlet></router-outlet>
+
+    
+
+    <!--
 
     <ng-container *ngIf=" currentSection === 'students-table-section' " >
       <students-table [studentsInTable]="studentsArray" />
@@ -30,6 +34,8 @@
     <ng-container *ngIf=" currentSection === 'edit-student-section' " >
       <edit-form [theStudentSearchEngine]="studentsArray" (studentEdited)=" handleEditStudent( $event ) "   />
     </ng-container>
+
+    -->
 
   </div>
   

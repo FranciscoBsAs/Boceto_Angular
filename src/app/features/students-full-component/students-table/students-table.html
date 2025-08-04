@@ -38,6 +38,23 @@
   </ng-container>
 
 
+        <!-- Name Column -->
+  <ng-container matColumnDef="Actions">
+    <th mat-header-cell *matHeaderCellDef> Actions </th>
+    <td mat-cell *matCellDef="let elementOfArray">
+      <button (click)="viewDetailsOfStudent(elementOfArray)" mat-button color="accent" >
+        View
+      </button>
+      <button (click)="null" mat-button color="primary" >
+        Edit
+      </button>
+      <button (click)="null" mat-button color="warn" >
+        Delete
+      </button>
+    </td>
+  </ng-container>
+
+
   <tr mat-header-row *matHeaderRowDef="columnTitles"></tr>
   <tr mat-row *matRowDef="let row; columns: columnTitles;"></tr>
 </table>
