@@ -20,11 +20,11 @@ export class StudentsFullComponent implements OnInit {
   studentsArray! : studentInterface[]
 
   ngOnInit() : void {
-    this.studentsAPI.getStudentsWithMockIO().subscribe( ( sts ) => {
+    this.studentsAPI.getStudentsWithMockIO().subscribe( ( studentsFromDB ) => {
 
-      console.table( sts )
+      console.table( studentsFromDB )
 
-      this.studentsArray = sts
+      this.studentsArray = studentsFromDB
 
     } )
   }
@@ -32,7 +32,7 @@ export class StudentsFullComponent implements OnInit {
 
   handleDeleteStudent( studentToDelete : studentInterface ) : void {
 
-    console.log( "Eliminado alumno", studentToDelete );
+    console.log( "Eliminado alumno", studentToDelete); console.table( studentToDelete );
 
 
     this.studentsAPI.deleteStudentInDB( studentToDelete ).subscribe( () : void => {
@@ -45,10 +45,6 @@ export class StudentsFullComponent implements OnInit {
     );
 
     
-
-
-
-
 
 
 

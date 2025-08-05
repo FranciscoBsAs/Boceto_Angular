@@ -3,5 +3,6 @@ export interface studentInterface {
     surname : string,
     dni : number,
     age : number,
-    average : number
+    average : number,
+    id: number | string
 }

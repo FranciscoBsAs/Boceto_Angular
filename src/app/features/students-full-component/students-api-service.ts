@@ -35,7 +35,12 @@ export class StudentsAPIService {
 
   deleteStudentInDB( someStudent : studentInterface ) : Observable<void> {
 
-    return this.myHTTP.delete<void>(`${this.baseURL}/${RoutingDB.STUDENTS}/${someStudent.dni}`).pipe( delay( 2000 ) ) ;
+    //const idInString = String(someStudent.id)
+
+    //console.log(idInString)
+
+    return this.myHTTP.delete<void>(`https://68916597447ff4f11fbc72b6.mockapi.io/students/${String(someStudent.id)}`).pipe( delay( 2000 ) ) ;
+                                  //https://68916597447ff4f11fbc72b6.mockapi.io/mockIOdbAPI/students
 
   }
   
