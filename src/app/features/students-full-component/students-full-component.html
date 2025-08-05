@@ -4,7 +4,10 @@
 
     {{ studentsArray | json}}
 
-    <students-table [studentsInTable]="studentsArray" >
+    <students-table 
+        [studentsInTable]="studentsArray" 
+        (deleteEventEmitt)=" handleDeleteStudent($event) "
+    >
 
     </students-table>
 

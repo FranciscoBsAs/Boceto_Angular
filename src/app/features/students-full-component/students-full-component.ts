@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { CdkNoDataRow } from "@angular/cdk/table";
 import { StudentsTable } from "./students-table/students-table";
 import { RouterModule } from '@angular/router';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-students-full-component',
@@ -19,13 +20,49 @@ export class StudentsFullComponent implements OnInit {
   studentsArray! : studentInterface[]
 
   ngOnInit() : void {
-    this.studentsAPI.getStudents().subscribe( ( sts ) => {
+    this.studentsAPI.getStudentsWithMockIO().subscribe( ( sts ) => {
 
       console.table( sts )
 
       this.studentsArray = sts
 
     } )
+  }
+
+
+  handleDeleteStudent( studentToDelete : studentInterface ) : void {
+
+    console.log( "Eliminado alumno", studentToDelete );
+
+
+    this.studentsAPI.deleteStudentInDB( studentToDelete ).subscribe( () : void => {
+
+      this.studentsAPI.getStudentsWithMockIO().subscribe( ( studentsUpadatedArray : studentInterface[] ) : void => {
+        this.studentsArray = studentsUpadatedArray
+      } )
+
+    }
+    );
+
+    
+
+
+
+
+
+
+
+
+    this.studentsAPI.deleteStudentInDB( studentToDelete ).pipe(
+
+      switchMap( () => this.studentsAPI.getStudentsWithMockIO() )
+
+    ).subscribe( ( updatedStudentsArray : studentInterface[] ) => {
+      
+      this.studentsArray = updatedStudentsArray
+
+    } )
+
   }
 
 }

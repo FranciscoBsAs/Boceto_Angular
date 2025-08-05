@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { studentInterface } from '../../../../shared/sharedContent/entities';
 import { MatTableModule } from '@angular/material/table'
 import { CommonModule } from '@angular/common';
@@ -15,6 +15,8 @@ import { RoutingPaths } from '../../../../shared/urlRoutesEnum';
 export class StudentsTable {
 
   @Input() studentsInTable : studentInterface[] = []
+
+  @Output() deleteEventEmitt : EventEmitter<studentInterface> = new EventEmitter<studentInterface>()
 
   constructor( private theRouter : Router ) {}
 
@@ -33,4 +35,10 @@ export class StudentsTable {
 
   }
 
+
+  deleteStudentFromChild( element: studentInterface ) {
+
+    this.deleteEventEmitt.emit( element )
+
+  }
 }
