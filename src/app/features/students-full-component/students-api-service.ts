@@ -24,7 +24,7 @@ export class StudentsAPIService {
   */
 
 
-  getStudentsWithMockIO () : Observable<studentInterface[]> {
+  getStudentsThroughMockIO () : Observable<studentInterface[]> {
 
     return this.myHTTP.get<studentInterface[]>("https://68916597447ff4f11fbc72b6.mockapi.io/students").pipe( delay(4000) )
 
@@ -33,15 +33,29 @@ export class StudentsAPIService {
 
 
 
-  deleteStudentInDB( someStudent : studentInterface ) : Observable<void> {
+  deleteStudentInDB ( someStudent : studentInterface ) : Observable<void> {
 
     //const idInString = String(someStudent.id)
 
     //console.log(idInString)
 
-    return this.myHTTP.delete<void>(`https://68916597447ff4f11fbc72b6.mockapi.io/students/${String(someStudent.id)}`).pipe( delay( 2000 ) ) ;
+    return this.myHTTP.delete<void>(`https://68916597447ff4f11fbc72b6.mockapi.io/students/${someStudent.id}`).pipe( delay( 2000 ) ) ;
                                   //https://68916597447ff4f11fbc72b6.mockapi.io/mockIOdbAPI/students
 
   }
   
+
+
+  /*
+
+  editStudentInDB ( updatedStudent : studentInterface ) : Observable<studentInterface> {
+
+    return this.myHTTP.put<studentInterface>(
+      `https://68916597447ff4f11fbc72b6.mockapi.io/students/${updatedStudent.id}`,
+      updatedStudent
+    )
+
+  }
+  */
+
 }

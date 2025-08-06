@@ -41,4 +41,37 @@ export class StudentsTable {
     this.deleteEventEmitt.emit( element )
 
   }
+
+  /*
+  editStudentFromChild( student : studentInterface ) {
+    this.theRouter.navigate( 
+      [ '/edit-student' ],
+      {
+        state: {
+          studentToEdit: student
+        }
+      }
+    )
+  }
+  */
+
+
+
+
+  /*
+
+  // Nuevo plateo de prueba:
+
+  @Output() studentToEditEmitter : EventEmitter<studentInterface> = new EventEmitter<studentInterface>()
+
+  secondEditStudentFromChild( student : studentInterface ) : void {
+
+    this.studentToEditEmitter.emit( student );
+
+  }
+
+  */
+
+
+
 }

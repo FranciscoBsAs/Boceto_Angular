@@ -20,7 +20,7 @@ export class EditForm implements OnInit {
 
   editStudentForm! : FormGroup ;
 
-  @Input() theStudentSearchEngine : studentInterface[] = []
+  // @Input() theStudentSearchEngine : studentInterface[] = []
 
   @Output() studentEdited : EventEmitter<studentInterface> = new EventEmitter<studentInterface>()
 
@@ -58,6 +58,7 @@ export class EditForm implements OnInit {
   }
 
 
+  /*
   searchStudentByDNI () {
 
     const studentSearched = this.theStudentSearchEngine.find ( (s) => s.dni === this.dniBuscar )
@@ -70,6 +71,7 @@ export class EditForm implements OnInit {
       }
 
   }
+  */
 
   showSuccesEdit_SnackBar() {
     const message = 'Estudiante editado correctamente'

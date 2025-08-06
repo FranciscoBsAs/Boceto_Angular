@@ -3,6 +3,7 @@ import { Home } from './home/home';
 import { RoutingPaths } from '../shared/urlRoutesEnum';
 import { StudentsFullComponent } from './features/students-full-component/students-full-component';
 import { ViewSingularStudent } from './features/students-full-component/view-singular-student/view-singular-student';
+import { EditForm } from './edit-form/edit-form';
 
 export const routes : Routes = [
 
@@ -38,6 +39,10 @@ export const routes : Routes = [
         path: RoutingPaths.VIEW_SINGULAR_STUDENT,
         //component: ViewSingularStudent
         loadComponent: () => import( './features/students-full-component/view-singular-student/view-singular-student').then( (module) => module.ViewSingularStudent )
+    },
+    {
+        path: RoutingPaths.EDIT_SINGULAR_STUDENT,
+        loadComponent: () => import( './edit-form/edit-form' ).then( (module) => module.EditForm )
     }
 
 ];

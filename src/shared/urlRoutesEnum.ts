@@ -4,7 +4,8 @@ export enum RoutingPaths {
     USERS = 'usuarios',
     STUDENTS = 'estudiantes',
     COURSES = 'cursos',
-    REGISTRATIONS= 'inscripciones',
-    VIEW_SINGULAR_STUDENT = 'view-student'
-    //registrations
+    REGISTRATIONS= 'inscripciones', //registrations
+    VIEW_SINGULAR_STUDENT = 'view-student',
+    EDIT_SINGULAR_STUDENT = 'edit-student'
+   
 }

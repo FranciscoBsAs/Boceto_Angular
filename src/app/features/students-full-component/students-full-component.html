@@ -2,11 +2,10 @@
 
 <div *ngIf="studentsArray ; else loading" >
 
-    {{ studentsArray | json}}
-
     <students-table 
         [studentsInTable]="studentsArray" 
         (deleteEventEmitt)=" handleDeleteStudent($event) "
+        ()
     >
 
     </students-table>

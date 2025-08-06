@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { CdkNoDataRow } from "@angular/cdk/table";
 import { StudentsTable } from "./students-table/students-table";
 import { RouterModule } from '@angular/router';
-import { switchMap } from 'rxjs';
+import { Observable, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-students-full-component',
@@ -20,7 +20,7 @@ export class StudentsFullComponent implements OnInit {
   studentsArray! : studentInterface[]
 
   ngOnInit() : void {
-    this.studentsAPI.getStudentsWithMockIO().subscribe( ( studentsFromDB ) => {
+    this.studentsAPI.getStudentsThroughMockIO().subscribe( ( studentsFromDB ) => {
 
       console.table( studentsFromDB )
 
@@ -34,7 +34,7 @@ export class StudentsFullComponent implements OnInit {
 
     console.log( "Eliminado alumno", studentToDelete); console.table( studentToDelete );
 
-
+    /*
     this.studentsAPI.deleteStudentInDB( studentToDelete ).subscribe( () : void => {
 
       this.studentsAPI.getStudentsWithMockIO().subscribe( ( studentsUpadatedArray : studentInterface[] ) : void => {
@@ -43,7 +43,7 @@ export class StudentsFullComponent implements OnInit {
 
     }
     );
-
+    */
     
 
 
@@ -51,7 +51,13 @@ export class StudentsFullComponent implements OnInit {
 
     this.studentsAPI.deleteStudentInDB( studentToDelete ).pipe(
 
-      switchMap( () => this.studentsAPI.getStudentsWithMockIO() )
+      switchMap( () : Observable<studentInterface[]> => this.studentsAPI.getStudentsThroughMockIO() )
+
+      /*
+      switchMap( function( this : any ) : Observable<studentInterface[]> {
+         return  this.studentsAPI.getStudentsThroughMockIO()  }.bind(this)
+      )
+      */
 
     ).subscribe( ( updatedStudentsArray : studentInterface[] ) => {
       
@@ -59,6 +65,17 @@ export class StudentsFullComponent implements OnInit {
 
     } )
 
+  }
+
+
+  handleEditStudent ( editedStudent : studentInterface ) {
+
+    const index = this.studentsArray.findIndex( ( t ) => t.id === editedStudent.id )
+
+    if ( index !== -1 ) {
+      this.studentsArray[index] = editedStudent
+    }
+    
   }
 
 }
