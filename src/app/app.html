@@ -6,36 +6,8 @@
 
   <div class="content">
     <h4>Contenido principal</h4>
-
-
-
-
-    <router-outlet></router-outlet>
-
     
-
-    <!--
-
-    <ng-container *ngIf=" currentSection === 'students-table-section' " >
-      <students-table [studentsInTable]="studentsArray" />
-    </ng-container>
-
-    <br>
-
-    <ng-container *ngIf=" currentSection === 'add-student-section' " >
-      <add-form (studentAdded)=" handleAddNewStudent( $event ) " />
-    </ng-container>
-
-
-    <ng-container *ngIf=" currentSection === 'delete-student-section' " >
-      <delete-form (studentDeleteFromChild)="handleDeleteStudent($event)" />
-    </ng-container>
-
-    <ng-container *ngIf=" currentSection === 'edit-student-section' " >
-      <edit-form [theStudentSearchEngine]="studentsArray" (studentEdited)=" handleEditStudent( $event ) "   />
-    </ng-container>
-
-    -->
+    <router-outlet></router-outlet>
 
   </div>
   

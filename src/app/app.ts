@@ -4,15 +4,11 @@ import { Toolbar } from './toolbar/toolbar';
 import { Navbar } from './navbar/navbar';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { studentInterface } from '../shared/sharedContent/entities';
-import { StudentsTable } from './features/students-full-component/students-table/students-table';
-import { AddForm } from './add-form/add-form';
-import { DeleteForm } from './delete-form/delete-form';
-import { EditForm } from "./edit-form/edit-form";
+
 
 @Component({
   selector: 'app-root',
-  imports: [Toolbar, Navbar, CommonModule, RouterModule, StudentsTable, AddForm, DeleteForm, EditForm],
+  imports: [Toolbar, Navbar, CommonModule, RouterModule,],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
