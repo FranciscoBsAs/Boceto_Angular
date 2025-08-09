@@ -1,11 +1,9 @@
-<p>students-full-component works!</p>
-
 <div *ngIf="studentsArray ; else loading" >
 
     <students-table 
         [studentsInTable]="studentsArray" 
         (deleteEventEmitt)=" handleDeleteStudent($event) "
-        ()
+        
     >
 
     </students-table>

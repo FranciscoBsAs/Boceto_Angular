@@ -6,16 +6,18 @@ import { CdkNoDataRow } from "@angular/cdk/table";
 import { StudentsTable } from "./students-table/students-table";
 import { RouterModule } from '@angular/router';
 import { Observable, switchMap } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-students-full-component',
+  selector: 'students-full-component',
   imports: [CommonModule, StudentsTable, RouterModule],
   templateUrl: './students-full-component.html',
   styleUrl: './students-full-component.css'
 })
+
 export class StudentsFullComponent implements OnInit {
 
-  constructor( private studentsAPI : StudentsAPIService ) {}
+  constructor( private studentsAPI : StudentsAPIService, private theRouter : Router ) {}
 
   studentsArray! : studentInterface[]
 
@@ -34,32 +36,11 @@ export class StudentsFullComponent implements OnInit {
 
     console.log( "Eliminado alumno", studentToDelete); console.table( studentToDelete );
 
-    /*
-    this.studentsAPI.deleteStudentInDB( studentToDelete ).subscribe( () : void => {
-
-      this.studentsAPI.getStudentsWithMockIO().subscribe( ( studentsUpadatedArray : studentInterface[] ) : void => {
-        this.studentsArray = studentsUpadatedArray
-      } )
-
-    }
-    );
-    */
-    
-
-
-
-
     this.studentsAPI.deleteStudentInDB( studentToDelete ).pipe(
 
       switchMap( () : Observable<studentInterface[]> => this.studentsAPI.getStudentsThroughMockIO() )
 
-      /*
-      switchMap( function( this : any ) : Observable<studentInterface[]> {
-         return  this.studentsAPI.getStudentsThroughMockIO()  }.bind(this)
-      )
-      */
-
-    ).subscribe( ( updatedStudentsArray : studentInterface[] ) => {
+    ).subscribe( ( updatedStudentsArray ) => {    // ( updatedStudentsArray /* : studentInterface[] inferido */ )
       
       this.studentsArray = updatedStudentsArray
 
@@ -67,7 +48,7 @@ export class StudentsFullComponent implements OnInit {
 
   }
 
-
+  /*
   handleEditStudent ( editedStudent : studentInterface ) {
 
     const index = this.studentsArray.findIndex( ( t ) => t.id === editedStudent.id )
@@ -77,6 +58,25 @@ export class StudentsFullComponent implements OnInit {
     }
     
   }
+  */
+
+  
+  /*
+  selectedStudent! : studentInterface | null
+
+  handleEditStudent ( student : studentInterface ) {
+
+    this.selectedStudent = student
+
+    this.theRouter.navigate(
+      [ '/edit-form' ],
+      {
+        state: { selectedOne: student }
+      }
+    )
+  }
+  */
+
 
 }
  
