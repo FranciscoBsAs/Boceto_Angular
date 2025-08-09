@@ -15,7 +15,7 @@ export function onlyLettersValidator ( control : AbstractControl ) : ValidationE
   const word : string = control.value
   if( !word ) { return null }
 
-  const lettersOnlyRegex = /^[a-zA-Z]+$/ ;
+  const lettersOnlyRegex = /^[a-zA-Z\s-]+$/ ;
 
   return (
     lettersOnlyRegex.test( word )
