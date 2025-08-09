@@ -1,0 +1,54 @@
+<p>view-singular-course works!</p>
+
+<table
+    mat-table
+    [dataSource]="[aSingularCourse]"
+    class="mat-elevation-z8"
+>
+
+    <ng-container matColumnDef="Name" >
+
+        <th mat-header-cell *matHeaderCellDef > Name </th>
+
+        <td mat-cell *matCellDef=" let elementSingularCourse" >
+            {{ elementSingularCourse?.name }}
+        </td>
+
+    </ng-container>
+
+
+
+
+    <ng-container matColumnDef="Code" >
+
+        <th mat-header-cell *matHeaderCellDef > Code </th>
+
+        <td mat-cell *matCellDef=" let elementSingularCourse" >
+            {{ elementSingularCourse?.code }}
+        </td>
+
+    </ng-container>
+
+
+    <ng-container matColumnDef="Credits" >
+
+        <th mat-header-cell *matHeaderCellDef > Credits </th>
+
+        <td mat-cell *matCellDef=" let elementSingularCourse" >
+            {{ elementSingularCourse?.credits }}
+        </td>
+
+    </ng-container>
+
+
+    <tr
+        mat-header-row
+        *matHeaderRowDef="columnTitlesSingular"
+    ></tr>
+
+    <tr
+        mat-row
+        *matRowDef=" let row ; columns: columnTitlesSingular "
+    ></tr>
+
+</table>
