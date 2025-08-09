@@ -5,10 +5,11 @@ import { CommonModule } from '@angular/common';
 import { FullNamePipe } from '../../../../shared/pipes/full-name-pipe';
 import { Router, RouterModule } from '@angular/router';
 import { RoutingPaths } from '../../../../shared/urlRoutesEnum';
+import { MyMatCommonRouterModule } from '../../my-mat-common-router/my-mat-common-router-module';
 
 @Component({
   selector: 'students-table',
-  imports: [ MatTableModule, CommonModule, FullNamePipe, RouterModule ],
+  imports: [ MyMatCommonRouterModule, FullNamePipe ],
   templateUrl: './students-table.html',
   styleUrl: './students-table.css'
 })

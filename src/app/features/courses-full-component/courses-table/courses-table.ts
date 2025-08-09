@@ -1,14 +1,13 @@
-import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { MatTableModule } from '@angular/material/table';
 import { Router, RouterModule } from '@angular/router';
 import { courseInterface } from '../../../../shared/sharedContent/entities';
 //import { CoursesFullComponent } from '../courses-full-component';
 import { RoutingPaths } from '../../../../shared/urlRoutesEnum';
+import { MyMatCommonRouterModule } from '../../my-mat-common-router/my-mat-common-router-module';
 
 @Component({
   selector: 'courses-table',
-  imports: [ MatTableModule, CommonModule, RouterModule ],
+  imports: [ MyMatCommonRouterModule ],
   templateUrl: './courses-table.html',
   styleUrl: './courses-table.css'
 })
