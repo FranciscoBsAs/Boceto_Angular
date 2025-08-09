@@ -86,7 +86,9 @@ export class EditStudentForm implements OnInit {
           this.theRouter.navigate( [ RoutingPaths.STUDENTS ] )
 
         },
-        error: (err) => { console.error( 'Error al editar estudiante', err ) }
+        error: (err) => { console.error( 'Error al editar estudiante', err ), this.showNotFounded_SnackBar() }
+
+        
       }
     )
 
