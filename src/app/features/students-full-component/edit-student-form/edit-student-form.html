@@ -1,0 +1,238 @@
+<div class="edit-form" >
+
+    <h2> Editar Estudiante </h2>
+
+
+    <br> <br>
+
+    <form [formGroup]="editStudentForm" (ngSubmit)="onSubmit()" >
+
+
+        <div class="formField-group">
+            <label for="dni">DNI:</label>
+            <input
+                type="number"
+                id="dni"
+                formControlName="dni"
+                [readonly]="true"
+                class="readonly-dni"
+         >
+        </div>
+
+        
+        <div class="formField-group" >
+
+            <label for="name">
+                Nombre: 
+            </label>
+
+            <input
+                type='text'
+                id="name"
+                formControlName="name"
+                placeholder="ingrese el nombre editado"
+            >
+
+            <div 
+                *ngIf="(
+                    editStudentForm.get('name')?.errors?.[ 'required' ]
+                    &&
+                    editStudentForm.get('name')?.touched
+                )"
+                class="err-class" >
+                <h5>
+                    El nombre es requerido
+                </h5>
+            </div>
+
+            <div 
+                *ngIf="(
+                    editStudentForm.get('name')?.errors?.[ 'onlyLetters' ]
+                    &&
+                    editStudentForm.get('name')?.touched
+                )"
+                class="err-class" >
+                <h5>
+                    Nombre unicamente con letras
+                </h5>
+            </div>
+
+            <div
+                *ngIf="(
+                    editStudentForm.get('name')?.errors?.[ 'firstLetterIsNotUpperCase' ]
+                    &&
+                    editStudentForm.get('name')?.touched
+                )"
+                class="err-class"
+            >
+                <h5>>Nombre debe empezar con mayuscula</h5>    
+            </div>
+
+        </div>
+
+
+        
+        <div class="formField-group" >
+
+            <label for="surname">
+                Apellido: 
+            </label>
+
+            <input
+                type="text"
+                id="surname"
+                formControlName="surname"
+                placeholder="ingrese el apellido editado"
+            >
+
+            <div 
+                *ngIf="(
+                    editStudentForm.get('surname')?.errors?.['required']
+                    &&
+                    editStudentForm.get('surname')?.touched
+                ) "
+                class="err-class" >
+                <h5>
+                    Apellido es requerido
+                </h5>
+            </div>
+
+            <div 
+                *ngIf="(
+                    editStudentForm.get('surname')?.errors?.['onlyLetters']
+                    &&
+                    editStudentForm.get('surname')?.touched
+                ) "
+                class="err-class" >
+                <h5>
+                    Apellido unicamente con letras
+                </h5>
+            </div>
+
+            <div
+                *ngIf="(
+                    editStudentForm.get('surname')?.errors?.[ 'firstLetterIsNotUpperCase' ]
+                    &&
+                    editStudentForm.get('surname')?.touched
+                )"
+                class="err-class"
+            >
+                <h5>>Apellido debe empezar con mayuscula</h5>    
+            </div>
+
+        </div>
+
+
+        <div class="formField-group" >
+
+            <label for="age">
+                Edad: 
+            </label>
+
+            <input
+                type="number"
+                id="age"
+                formControlName="age"
+                placeholder="ingrese la edad a editar"
+            >
+
+            <div 
+                *ngIf=" (
+                    editStudentForm.get('age')?.invalid
+                    &&
+                    editStudentForm.get('age')?.touched
+                ) "
+                class="err-class" >
+                <h5>
+                    La edad es requerido
+                </h5>
+            </div>
+            
+        </div>
+
+
+        <div class="formField-group" >
+
+            <label for="average">
+                Promedio: 
+            </label>
+
+            <input
+                type="number"
+                id="average"
+                formControlName="average"
+                placeholder="ingrese el promedio editado"
+            >
+
+            <div 
+                *ngIf="( 
+                    editStudentForm.get('average')?.errors?.['nullAverage']
+                    &&
+                    editStudentForm.get('average')?.touched
+                )"
+                class="err-class" >
+                <h5>
+                    El promedio es tiene que ser mayor a 0
+                </h5>
+            </div>
+
+            <div
+                *ngIf="( 
+                    editStudentForm.get('average')?.errors?.['required']
+                    &&
+                    editStudentForm.get('average')?.touched
+                )"
+                class="err-class" >
+                <h5>
+                    El promedio es requerido
+                </h5>
+            </div>
+            
+        </div>
+
+
+
+
+
+
+
+
+
+<div class="formField-group" >
+
+            <label for="id">
+                ID: 
+            </label>
+
+            <input
+                type="number"
+                id="id"
+                formControlName="id"
+                placeholder="ingrese el id editado"
+                [readOnly]="true"
+            >
+            
+</div>
+
+
+
+
+
+
+
+
+
+
+
+        <button type="submit" [disabled]="editStudentForm.invalid" class="submit-btn">
+            Editar Estudiante
+        </button>
+
+        <button type="button" (click)="handleOnReset()" class="reset-btn">
+            Limpiar formulario
+        </button>
+
+
+    </form>
+
+</div>
