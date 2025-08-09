@@ -42,36 +42,19 @@ export class StudentsTable {
 
   }
 
-  /*
-  editStudentFromChild( student : studentInterface ) {
-    this.theRouter.navigate( 
-      [ '/edit-student' ],
-      {
-        state: {
-          studentToEdit: student
+
+  // nuevo plateo 21:55
+
+    editStudentFromChild( certainStudent : studentInterface ) : void {
+      this.theRouter.navigate( 
+        [ `/${RoutingPaths.EDIT_SINGULAR_STUDENT}` ],
+        {
+          state: {
+            studentToEdit: certainStudent
+          }
         }
-      }
-    )
-  }
-  */
-
-
-
-
-  /*
-
-  // Nuevo plateo de prueba:
-
-  @Output() studentToEditEmitter : EventEmitter<studentInterface> = new EventEmitter<studentInterface>()
-
-  secondEditStudentFromChild( student : studentInterface ) : void {
-
-    this.studentToEditEmitter.emit( student );
-
-  }
-
-  */
-
+      )
+    }
 
 
 }
