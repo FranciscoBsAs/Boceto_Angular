@@ -1,0 +1,80 @@
+<div class="edit-form" >
+
+    <h2>Editar Curso</h2>
+
+    <br><br>
+
+    <form
+        [formGroup]="editCourseForm"
+        (ngSubmit)="onsubmit()"
+    >
+
+        <div class="formField-group" >
+
+            <label for="name">Name</label>
+            <input
+                type="text"
+                id="name"
+                formControlName="name"
+                placeholder="ingrese el nombre editado"
+            >
+
+
+        </div>
+
+        <div class="formField-group" >
+
+            <label for="code">Código</label>
+            <input
+                type="text"
+                id="code"
+                formControlName="code"
+                placeholder="ingrese el código editado"
+            >
+
+        </div>
+
+
+        <div class="formField-group" >
+
+            <label for="credits">Credits</label>
+            <input
+                type="number"
+                id="credits"
+                formControlName="credits"
+                placeholder="ingrese el credito editado"
+            >
+        </div>
+
+
+        <div class="formField-group">
+            <label for="id">Id</label>
+            <input
+                type="string"
+                id="id"
+                formControlName="id"
+                [readonly]="true"
+                class="readonly-dni"
+        >
+        </div>
+
+
+        <button
+            type="submit"
+            [disabled]="editCourseForm.invalid"
+            class="submit-bt" 
+        >
+            Editar Curso
+        </button>
+
+        <button
+            type="button"
+            (click)="handleOnReset()"
+            class="reset-btn"
+        > 
+            Limpiar formulario
+        </button>
+
+    </form>
+
+</div>

@@ -1,0 +1,64 @@
+
+<table
+    mat-table
+    [dataSource]="coursesInTable"
+    class="mat-elevation-z8"
+>
+
+    <ng-container matColumnDef="Name">
+
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let elementOfArray">
+            {{ elementOfArray?.name }}
+        </td>
+
+    </ng-container>
+
+
+    <ng-container matColumnDef="Code">
+
+        <th mat-header-cell *matHeaderCellDef> Code </th>
+        <td mat-cell *matCellDef="let elementOfArray">
+            {{ elementOfArray?.code }}
+        </td>
+
+    </ng-container>
+
+
+    <ng-container matColumnDef="Credits">
+
+        <th mat-header-cell *matHeaderCellDef> Credits </th>
+        <td mat-cell *matCellDef="let elementOfArray">
+            {{ elementOfArray?.credits }}
+        </td>
+
+    </ng-container>
+
+
+    <ng-container matColumnDef="Actions">
+
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let elementOfArray">
+            
+            <button (click)="viewDetailSingularCourseFromChild(elementOfArray)" mat-button color="accent" >
+                View
+            </button>
+
+            <button (click)="editCourseFromChild( elementOfArray )" mat-button color="primary" >
+                Edit
+            </button>
+
+            
+            <button (click)="deleteCourseFromChild( elementOfArray )" mat-button color="warn" >
+                Delete
+            </button>
+
+        </td>
+
+    </ng-container>
+
+    <tr mat-header-row  *matHeaderRowDef="columnTitles" ></tr>
+    <tr mat-row *matRowDef="let row ; columns: columnTitles " ></tr>
+
+
+</table>
