@@ -8,7 +8,7 @@
         <mat-card appearance="outlined" >
             <li class="nav-link custom-nav-item" >
                 <mat-card-content>
-                    <a routerLink="/estudiantes" >
+                    <a [routerLink]="routingPathsInNavBar.STUDENTS" >   <!-- se usa property binding con [routerLink=""] -->
                         Lista de estudiantes
                     </a>
                 </mat-card-content>
@@ -16,7 +16,7 @@
 
             <li class="nav-link custom-nav-item">
                 <mat-card-content>
-                    <a routerLink="/cursos" >
+                    <a routerLink="{{routingPathsInNavBar.COURSES}}" >  <!-- NO se usa property binding -->
                         Cursos
                     </a>
                 </mat-card-content>
@@ -25,7 +25,7 @@
 
             <li class="nav-link custom-nav-item" >
                 <mat-card-content>
-                    <a routerLink="/inscripciones" >
+                    <a [routerLink]="routingPathsInNavBar.REGISTRATIONS" > <!-- se usa property binding con [routerLink=""] -->
                         Inscripciones
                     </a>
                 </mat-card-content>

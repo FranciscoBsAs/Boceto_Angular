@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { MatCardModule } from '@angular/material/card'
 import { RouterModule } from '@angular/router';
+import { RoutingPaths } from '../../shared/urlRoutesEnum';
 
 
 @Component({
@@ -10,5 +11,7 @@ import { RouterModule } from '@angular/router';
   styleUrl: './navbar.css'
 })
 export class Navbar {
+
+  public routingPathsInNavBar = RoutingPaths
 
 }
