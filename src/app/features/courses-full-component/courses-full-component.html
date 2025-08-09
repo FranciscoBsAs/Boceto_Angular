@@ -1,1 +1,17 @@
-<p>courses-full-component works!</p>
+<div *ngIf=" coursesArray ; else loadingTemplate ">
+
+    <courses-table 
+        [coursesInTable]="coursesArray"
+
+        (deleteCourseEventEmitter)="handleDeleteCourse( $event )"
+    >
+
+    </courses-table>
+
+</div>
+
+<ng-template #loadingTemplate>
+    <p>
+        Loading...
+    </p>
+</ng-template>
