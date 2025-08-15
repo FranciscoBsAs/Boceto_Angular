@@ -1,7 +1,7 @@
 <div class="add-form" >
     <h2> Añadir Estudiantes </h2>
 
-    <form [formGroup]=" addStudentForm " (ngSubmit)="onSubmit()" >
+    <form [formGroup]=" oldAddStudentForm " (ngSubmit)="onSubmit()" >
 
         <div class="formField-group" >
 
@@ -14,9 +14,9 @@
             >
             <div
                 *ngIf="(
-                    addStudentForm.get( 'name' )?.errors?.['onlyLetters'] 
+                    oldAddStudentForm.get( 'name' )?.errors?.['onlyLetters'] 
                     &&
-                    addStudentForm.get('name')?.touched
+                    oldAddStudentForm.get('name')?.touched
                 )"
                 class="err-class" > 
             
@@ -25,9 +25,9 @@
 
             <div
                 *ngIf="(
-                    addStudentForm.get('name')?.errors?.[ 'required' ]
+                    oldAddStudentForm.get('name')?.errors?.[ 'required' ]
                     &&
-                    addStudentForm.get('name')?.touched
+                    oldAddStudentForm.get('name')?.touched
                 )"
                 class="err-class"
             > 
@@ -36,9 +36,9 @@
 
             <div
                 *ngIf="(
-                    addStudentForm.get('name')?.errors?.[ 'firstLetterIsNotUpperCase' ]
+                    oldAddStudentForm.get('name')?.errors?.[ 'firstLetterIsNotUpperCase' ]
                     &&
-                    addStudentForm.get('name')?.touched
+                    oldAddStudentForm.get('name')?.touched
                 )"
                 class="err-class"
             > 
@@ -59,9 +59,9 @@
             >
             <div
                 *ngIf="(
-                    addStudentForm.get( 'surname' )?.errors?.['onlyLetters'] 
+                    oldAddStudentForm.get( 'surname' )?.errors?.['onlyLetters'] 
                     &&
-                    addStudentForm.get('surname')?.touched
+                    oldAddStudentForm.get('surname')?.touched
                 )"
                 class="err-class"
             >
@@ -70,9 +70,9 @@
 
             <div
                 *ngIf="(
-                    addStudentForm.get('surname')?.errors?.[ 'required' ]
+                    oldAddStudentForm.get('surname')?.errors?.[ 'required' ]
                     &&
-                    addStudentForm.get( 'surname')?.touched
+                    oldAddStudentForm.get( 'surname')?.touched
                 )"
                 class="err-class" 
             >
@@ -81,9 +81,9 @@
 
             <div
                 *ngIf="(
-                    addStudentForm.get('surname')?.errors?.[ 'firstLetterIsNotUpperCase' ]
+                    oldAddStudentForm.get('surname')?.errors?.[ 'firstLetterIsNotUpperCase' ]
                     &&
-                    addStudentForm.get( 'surname')?.touched
+                    oldAddStudentForm.get( 'surname')?.touched
                 )"
                 class="err-class" 
             >
@@ -102,7 +102,7 @@
                 formControlName="dni"
                 placeholder="Ingrese el DNI" 
             >
-            <div  *ngIf=" addStudentForm.get( 'dni' )?.invalid && addStudentForm.get('dni')?.touched " class="err-class" >
+            <div  *ngIf=" oldAddStudentForm.get( 'dni' )?.invalid && oldAddStudentForm.get('dni')?.touched " class="err-class" >
                 DNI es requerido
             </div>
 
@@ -119,9 +119,9 @@
             placeholder="Ingrese la edad" 
         >
         <div  
-            *ngIf=" addStudentForm.get( 'age' )?.invalid
+            *ngIf=" oldAddStudentForm.get( 'age' )?.invalid
             &&
-            addStudentForm.get('age')?.touched "
+            oldAddStudentForm.get('age')?.touched "
             class="err-class"
         >
             Edad es requerido
@@ -141,9 +141,9 @@
         >
         <div
             *ngIf="( 
-                addStudentForm.get( 'average' )?.errors?.['nullAverage'] 
+                oldAddStudentForm.get( 'average' )?.errors?.['nullAverage'] 
                 &&
-                addStudentForm.get('average')?.touched 
+                oldAddStudentForm.get('average')?.touched 
             ) "
             class="err-class"
         >
@@ -152,9 +152,9 @@
 
         <div
             *ngIf="(
-                addStudentForm.get('average')?.errors?.['required']
+                oldAddStudentForm.get('average')?.errors?.['required']
                 &&
-                addStudentForm.get( 'average' )?.touched
+                oldAddStudentForm.get( 'average' )?.touched
             )"
             class="err-class"
         >
@@ -167,7 +167,7 @@
     <button 
         type="submit"
         class="submit-btn"
-        [disabled]="addStudentForm.invalid"
+        [disabled]="oldAddStudentForm.invalid"
         (click)="onSubmit()"
         >
         Añadir Estudiante
@@ -176,7 +176,7 @@
     <button 
         type="submit"
         class="submit-btn"
-        [disabled]="addStudentForm.invalid"
+        [disabled]="oldAddStudentForm.invalid"
         >
         Añadir Estudiante
     </button>

@@ -15,13 +15,15 @@ import { averageSup0, firstLetterUpperCaseValidator, onlyLettersValidator } from
 
 export class AddForm implements OnInit {
 
-  addStudentForm! : FormGroup ;   // preguntar al profe lo q hace !
+  @Output() studentAdded = new EventEmitter<studentInterface>()
+
+  oldAddStudentForm! : FormGroup ;   // preguntar al profe lo q hace !
 
   constructor( private myFormBuilder : FormBuilder ) {}
 
   ngOnInit() {
 
-    this.addStudentForm = this.myFormBuilder.group(
+    this.oldAddStudentForm = this.myFormBuilder.group(
       {
         name: [ '', [ Validators.required, onlyLettersValidator, firstLetterUpperCaseValidator ] ],
         surname: [ '', [ Validators.required, onlyLettersValidator, firstLetterUpperCaseValidator ] ],
@@ -33,20 +35,19 @@ export class AddForm implements OnInit {
 
   }
 
-  @Output() studentAdded = new EventEmitter<studentInterface>()
 
   onSubmit() {
 
     console.log( "Form submited" )
 
-    this.studentAdded.emit( this.addStudentForm.value as studentInterface)
+    this.studentAdded.emit( this.oldAddStudentForm.value as studentInterface)
 
-    this.addStudentForm.reset()
+    this.oldAddStudentForm.reset()
 
   }
   
   handleOnReset() {
-    this.addStudentForm.reset() // reset the form to it's initial state
+    this.oldAddStudentForm.reset() // reset the form to it's initial state
   }
 
 
