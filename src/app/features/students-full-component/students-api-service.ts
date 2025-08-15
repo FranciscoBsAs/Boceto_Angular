@@ -11,14 +11,14 @@ import { RoutingDB } from '../../../enumRoutesDB';
 
 export class StudentsAPIService {
 
-  //baseURL : string = "http://localhost:3001" ;
+  private baseURL : string = RoutingDB.EDPOINT_APIio_DB
 
   constructor( private myHTTP : HttpClient ) { }
   
 
   getStudentsThroughMockIO () : Observable<studentInterface[]> {
 
-    return this.myHTTP.get<studentInterface[]>(`${RoutingDB.EDPOINT_APIio_DB}/${RoutingDB.STUDENTS}`).pipe( delay(4000) )
+    return this.myHTTP.get<studentInterface[]>(`${this.baseURL}/${RoutingDB.STUDENTS}`).pipe( delay(4000) )
 
   }
 
@@ -26,20 +26,26 @@ export class StudentsAPIService {
 
   deleteStudentInDB ( someStudent : studentInterface ) : Observable<void> {
 
-    return this.myHTTP.delete<void>(`${RoutingDB.EDPOINT_APIio_DB}/${RoutingDB.STUDENTS}/${someStudent.id}`).pipe( delay( 2000 ) ) ;
+    return this.myHTTP.delete<void>(`${this.baseURL}/${RoutingDB.STUDENTS}/${someStudent.id}`).pipe( delay( 2000 ) ) ;
 
   }
   
-
 
   editStudentInDB ( updatedStudent : studentInterface ) : Observable<studentInterface> {
 
     return( 
       this.myHTTP.put<studentInterface>(
-        `${RoutingDB.EDPOINT_APIio_DB}/${RoutingDB.STUDENTS}/${updatedStudent.id}`,
+        `${this.baseURL}/${RoutingDB.STUDENTS}/${updatedStudent.id}`,
         updatedStudent
       )
     )
+
+  }
+
+
+  addStudentInDB ( newStudent : studentInterface ) : Observable<studentInterface> {
+
+    return this.myHTTP.post<studentInterface>( `${this.baseURL}/${RoutingDB.STUDENTS}`, newStudent )
 
   }
   

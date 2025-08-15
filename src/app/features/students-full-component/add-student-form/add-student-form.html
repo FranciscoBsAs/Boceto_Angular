@@ -1,0 +1,195 @@
+<div class="add-form" >
+    <h2> Añadir Estudiantes </h2>
+
+    <form [formGroup]=" addStudentForm " (ngSubmit)="onSubmit()" >
+
+        <div class="formField-group" >
+
+            <label for="name"> Nombre:  </label>
+            <input
+                type="text"
+                id="name"
+                formControlName="name"
+                placeholder="Ingrese el nombre" 
+            >
+            <div
+                *ngIf="(
+                    addStudentForm.get( 'name' )?.errors?.['onlyLetters'] 
+                    &&
+                    addStudentForm.get('name')?.touched
+                )"
+                class="err-class" > 
+            
+                >Nombre solo con letras
+            </div>
+
+            <div
+                *ngIf="(
+                    addStudentForm.get('name')?.errors?.[ 'required' ]
+                    &&
+                    addStudentForm.get('name')?.touched
+                )"
+                class="err-class"
+            > 
+                >Nombre es requerido   
+            </div>
+
+            <div
+                *ngIf="(
+                    addStudentForm.get('name')?.errors?.[ 'firstLetterIsNotUpperCase' ]
+                    &&
+                    addStudentForm.get('name')?.touched
+                )"
+                class="err-class"
+            > 
+                >Nombre debe empezar con mayuscula   
+            </div>
+
+        </div>
+
+
+        <div class="formField-group" >
+
+            <label for="surname"> Apellido:  </label>
+            <input
+                type="text"
+                id="surname"
+                formControlName="surname"
+                placeholder="Ingrese el apellido" 
+            >
+            <div
+                *ngIf="(
+                    addStudentForm.get( 'surname' )?.errors?.['onlyLetters'] 
+                    &&
+                    addStudentForm.get('surname')?.touched
+                )"
+                class="err-class"
+            >
+                >Apellido solo con letras
+            </div>
+
+            <div
+                *ngIf="(
+                    addStudentForm.get('surname')?.errors?.[ 'required' ]
+                    &&
+                    addStudentForm.get( 'surname')?.touched
+                )"
+                class="err-class" 
+            >
+                > Apellido es requerido 
+            </div>
+
+            <div
+                *ngIf="(
+                    addStudentForm.get('surname')?.errors?.[ 'firstLetterIsNotUpperCase' ]
+                    &&
+                    addStudentForm.get( 'surname')?.touched
+                )"
+                class="err-class" 
+            >
+                > Apellido debe empezar con mayuscula 
+            </div>
+
+        </div>
+
+
+        <div class="formField-group" >
+
+            <label for="dni"> DNI:  </label>
+            <input
+                type="number"
+                id="dni"
+                formControlName="dni"
+                placeholder="Ingrese el DNI" 
+            >
+            <div  *ngIf=" addStudentForm.get( 'dni' )?.invalid && addStudentForm.get('dni')?.touched " class="err-class" >
+                DNI es requerido
+            </div>
+
+        </div>
+
+
+    <div class="formField-group" >
+
+        <label for="age"> Edad:  </label>
+        <input
+            type="number"
+            id="age"
+            formControlName="age"
+            placeholder="Ingrese la edad" 
+        >
+        <div  
+            *ngIf=" addStudentForm.get( 'age' )?.invalid
+            &&
+            addStudentForm.get('age')?.touched "
+            class="err-class"
+        >
+            Edad es requerido
+        </div>
+
+    </div>
+
+
+    <div class="formField-group" >
+
+        <label for="average"> Promedio:  </label>
+        <input
+            type="number"
+            id="average"
+            formControlName="average"
+            placeholder="Ingrese el promedio" 
+        >
+        <div
+            *ngIf="( 
+                addStudentForm.get( 'average' )?.errors?.['nullAverage'] 
+                &&
+                addStudentForm.get('average')?.touched 
+            ) "
+            class="err-class"
+        >
+            >Promedio debe ser mayor de 0 hasta 10
+        </div>
+
+        <div
+            *ngIf="(
+                addStudentForm.get('average')?.errors?.['required']
+                &&
+                addStudentForm.get( 'average' )?.touched
+            )"
+            class="err-class"
+        >
+            >Promedio es requerido
+        </div>
+
+    </div>
+
+    <!--
+    <button 
+        type="submit"
+        class="submit-btn"
+        [disabled]="addStudentForm.invalid"
+        (click)="onSubmit()"
+        >
+        Añadir Estudiante
+    </button>
+    -->
+    <button 
+        type="submit"
+        class="submit-btn"
+        [disabled]="addStudentForm.invalid"
+        >
+        Añadir Estudiante
+    </button>
+
+
+    <button
+        type="button"  
+        (click)="handleOnReset()"
+        class="reset-btn"
+        >
+        Limpiar formulario
+    </button>
+
+    </form>
+
+</div>
