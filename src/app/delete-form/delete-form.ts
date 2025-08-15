@@ -15,9 +15,12 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 })
 export class DeleteForm implements OnInit {
 
+  @Output() studentDeleteFromChild : EventEmitter<number> = new EventEmitter<number>()
+
   deleteStudentForm! : FormGroup
 
   private _mySnackBar = inject( MatSnackBar )
+
 
   constructor( private myFormBuilder : FormBuilder ) {}
 
@@ -29,10 +32,10 @@ export class DeleteForm implements OnInit {
           description: [ '', Validators.required ]
         }
       )
-  }
+  } 
 
 
-  @Output() studentDeleteFromChild : EventEmitter<number> = new EventEmitter<number>()
+
 
   onDeleteStudent() : number | void {
     console.log('Delete Form submitted:', this.deleteStudentForm.valid);
