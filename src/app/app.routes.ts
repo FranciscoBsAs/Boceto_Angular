@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { RoutingPaths } from '../shared/urlRoutesEnum';
 import { StudentsFullComponent } from './features/students-full-component/students-full-component';
+import { firstExampleGuardGuard } from '../shared/guards/first-example-guard-guard';
 
 
 export const routes : Routes = [
@@ -28,6 +29,7 @@ export const routes : Routes = [
 
     {
         path: RoutingPaths.REGISTRATIONS,
+        canActivate: [firstExampleGuardGuard],
         loadComponent: () => import( './features/registrations-full-component/registrations-full-component' ).then( (module) => module.RegistrationsFullComponent )
     },
     {
