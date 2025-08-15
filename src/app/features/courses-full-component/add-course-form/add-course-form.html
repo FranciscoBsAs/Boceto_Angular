@@ -1,0 +1,98 @@
+<p>add-course-form works!</p>
+
+
+<div class="add-form">
+    <h2> Añadir curso </h2>
+
+    <form
+        [formGroup]="addCourseForm"
+        (ngSubmit)="onSubmit()"
+    >
+        <div class="formField-group" >
+
+            <label for="name" > Nombre: </label>
+            <input 
+                type="text" 
+                name="name" 
+                formControlName="name"
+                placeholder="Ingrese el nombre del curso"
+            >
+            <div
+                class="err-class"
+            >
+            </div>
+
+        </div>
+
+        <div class="formField-group" >
+
+            <label for="code" > Código: </label>
+            <input 
+                type="text" 
+                name="code" 
+                formControlName="code"
+                placeholder="Ingrese el código del curso"
+            >
+            <div
+                class="err-class"
+            >
+            </div>
+            
+        </div>
+
+
+
+        <div class="formField-group" >
+
+            <label for="credits" > Creditos: </label>
+            <input 
+                type="number" 
+                name="credits" 
+                formControlName="credits"
+                placeholder="Ingrese los creditos del curso"
+            >
+            <div
+                class="err-class"
+            >
+            </div>
+            
+        </div>
+
+
+        <div class="formField-group" >
+
+            <label for="id" > ID: </label>
+            <input 
+                 
+                name="id" 
+                formControlName="id"
+                placeholder="Ingrese el id del curso"
+            >
+            <div
+                class="err-class"
+            >
+            </div>
+            
+        </div>
+
+
+        <button
+            type="submit"
+            class="submit-btn"
+            [disabled]="addCourseForm.invalid"   
+        >
+            Añadir Curso
+        </button>
+
+
+        <button
+            type="button"
+            (click)="handleOnReset()"
+            class="reset-btn"
+        >
+            Limpiar formulario
+        </button>
+
+    </form>
+
+</div>

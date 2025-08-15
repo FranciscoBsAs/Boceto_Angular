@@ -10,20 +10,22 @@ import { RoutingDB } from '../../../enumRoutesDB';
 
 export class CoursesApiService {
 
+  private baseURL : string = RoutingDB.EDPOINT_APIio_DB
+
   constructor( private myHttp : HttpClient ) { }
 
 
   public getCoursesThroughMockIO () : Observable< courseInterface[] > {
 
-    return this.myHttp.get< courseInterface[] >( `${RoutingDB.EDPOINT_APIio_DB}/${RoutingDB.COURSES}` ).pipe( delay(4000) )
+    return this.myHttp.get< courseInterface[] >( `${this.baseURL}/${RoutingDB.COURSES}` ).pipe( delay(4000) )
 
   }
 
 
-  public editStudentInDB ( updatedCourse : courseInterface ) : Observable<courseInterface> {
+  editStudentInDB ( updatedCourse : courseInterface ) : Observable<courseInterface> {
 
     return(
-      this.myHttp.put<courseInterface>(`${RoutingDB.EDPOINT_APIio_DB}/${RoutingDB.COURSES}/${updatedCourse.id}` ,
+      this.myHttp.put<courseInterface>(`${this.baseURL}/${RoutingDB.COURSES}/${updatedCourse.id}` ,
         updatedCourse
       )
     )
@@ -31,10 +33,17 @@ export class CoursesApiService {
   } 
 
 
-  public deleteCourseInDB ( someCourse : courseInterface ) : Observable<void> {
+  deleteCourseInDB ( someCourse : courseInterface ) : Observable<void> {
 
-    return this.myHttp.delete<void>( `${RoutingDB.EDPOINT_APIio_DB}/${RoutingDB.COURSES}/${someCourse.id} ` ).pipe( delay( 3000 ) )
+    return this.myHttp.delete<void>( `${this.baseURL}/${RoutingDB.COURSES}/${someCourse.id} ` ).pipe( delay( 3000 ) )
 
+  }
+
+
+  addCourseInDB ( newCourse : courseInterface ) : Observable<courseInterface> {
+
+    return this.myHttp.post<courseInterface>( `${this.baseURL}/${RoutingDB.COURSES}`, newCourse )
+    
   }
 
 }
