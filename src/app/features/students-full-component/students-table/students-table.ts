@@ -46,16 +46,31 @@ export class StudentsTable {
 
   // nuevo plateo 21:55
 
-    editStudentFromChild( certainStudent : studentInterface ) : void {
-      this.theRouter.navigate( 
-        [ `/${RoutingPaths.EDIT_SINGULAR_STUDENT}` ],
-        {
-          state: {
-            studentToEdit: certainStudent
-          }
+  editStudentFromChild( certainStudent : studentInterface ) : void {
+    this.theRouter.navigate( 
+      [ `/${RoutingPaths.EDIT_SINGULAR_STUDENT}` ],
+      {
+        state: {
+          studentToEdit: certainStudent
         }
-      )
-    }
+      }
+    )
+  }
+
+
+  /*
+  addStudentFromChild ( newStudent : studentInterface ) : void {
+    this.theRouter.navigate(
+      [ `/${RoutingPaths.ADD_NEW_STUDENT}` ],
+      {
+        state: {
+          newStudentToAdd: newStudent
+        }
+      }
+    )
+
+  }
+ */ 
 
 
 }
