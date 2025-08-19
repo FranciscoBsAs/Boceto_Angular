@@ -11,4 +11,15 @@ import { BigTitle } from '../../shared/directives/big-title';
 })
 export class Toolbar {
 
+
+  readonly titulo : string = "College App"
+
+  // nuevo ocasional, para testing
+
+
+
+  public obtenerTitutlo () : string {
+    return 'Titulo incorrecto'
+  }
+
 }

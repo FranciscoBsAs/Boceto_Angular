@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { delay, Observable } from 'rxjs';
+import { catchError, delay, Observable, throwError } from 'rxjs';
 import { studentInterface } from '../../../shared/sharedContent/entities';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { RoutingDB } from '../../../enumRoutesDB';
 //import { RoutingPaths } from '../../../shared/urlRoutesEnum';
 
@@ -19,9 +19,10 @@ export class StudentsAPIService {
   getStudentsThroughMockIO () : Observable<studentInterface[]> {
 
     return this.myHTTP.get<studentInterface[]>(`${this.baseURL}/${RoutingDB.STUDENTS}`).pipe( delay(4000) )
+                      .pipe( catchError( this.handleError ) ) // se agrega la funcionalidad RxJS con handleError
 
   }
-
+    // return this.myHTTP.get<Observable<studentInterface[]>>(`${this.baseURL}/${RoutingDB.STUDENTS}`).pipe( delay(4000) ) ???
 
 
   deleteStudentInDB ( someStudent : studentInterface ) : Observable<void> {
@@ -49,5 +50,24 @@ export class StudentsAPIService {
 
   }
   
+
+
+
+  // nueva handleError clase 5/8
+
+  private handleError ( err : HttpErrorResponse ) : Observable<never> {
+
+    if( err.error instanceof ErrorEvent ) { // ErrorEvent es error tipico de JS
+
+      console.warn( 'Error de Frontend: ', err.error.message )
+
+    }
+    else{
+      console.warn( `Error de Backend: ${err.status}, cuerpo del error: ${err.message} ` )
+    }
+
+    return throwError( 'Error de comunicación HTTP' )
+
+  }
 
 }

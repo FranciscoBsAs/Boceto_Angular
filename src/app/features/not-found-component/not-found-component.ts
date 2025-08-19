@@ -23,4 +23,8 @@ export class NotFoundComponent implements OnInit {
 
   }
 
+  goBack () : void {
+    this.theRouter.navigate([ RoutingPaths.HOME ])
+  }
+
 }

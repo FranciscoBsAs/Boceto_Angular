@@ -4,11 +4,12 @@ import { Toolbar } from './toolbar/toolbar';
 import { Navbar } from './navbar/navbar';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { NgrxExampleComponent } from "./ngrx-example-component/ngrx-example-component";
 
 
 @Component({
   selector: 'app-root',
-  imports: [Toolbar, Navbar, CommonModule, RouterModule,],
+  imports: [Toolbar, Navbar, CommonModule, RouterModule, NgrxExampleComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -63,4 +64,9 @@ export class App   {
   }
 
   */
+
+  // method de ej para testing
+  public obtenerTitulo() : string {
+    return 'Titulo incorrecto'
+  }
 }

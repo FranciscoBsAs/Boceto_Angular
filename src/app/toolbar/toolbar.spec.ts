@@ -20,4 +20,28 @@ describe('Toolbar', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
+
+  // nuevo
+
+  it( 'Titulo esperado', () => {
+    const tituloEsperado : string = 'College App'
+    expect(component.titulo).toBe( tituloEsperado )
+  } )
+
+  it( 'deberia retornar un titulo incorrecto', () => {
+    
+
+    const fixture = TestBed.createComponent(Toolbar)
+    
+
+    const titulo = fixture.componentInstance.obtenerTitutlo()
+
+
+    expect( titulo ).toBe( 'Titulo incorrecto' )
+
+  } )
+
+
 });

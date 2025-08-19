@@ -29,7 +29,7 @@ export const routes : Routes = [
 
     {
         path: RoutingPaths.REGISTRATIONS,
-        canActivate: [firstExampleGuardGuard],
+         canActivate: [firstExampleGuardGuard],
         loadComponent: () => import( './features/registrations-full-component/registrations-full-component' ).then( (module) => module.RegistrationsFullComponent )
     },
     {
